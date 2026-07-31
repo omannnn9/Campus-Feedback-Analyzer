@@ -3,8 +3,3 @@ import pandas as pd
 
 
 feedback = input("Please enter the feedback: ")
-
-
-
-
-
