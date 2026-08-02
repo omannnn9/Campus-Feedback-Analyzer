@@ -1,10 +1,4 @@
 """
-Campus Voice AI - the WHOLE backend in one file.
-
-Run:
-    pip install -r requirements.txt
-    python app.py            ->  http://localhost:5000
-
 Sections (top to bottom):
     1. setup      - creates database.db, 5 tables, demo users, loads the CSV
     2. ML         - TF-IDF + Naive Bayes category model (scikit-learn) + accuracy
