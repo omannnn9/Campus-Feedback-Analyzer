@@ -1,0 +1,847 @@
+<!doctype html>
+<!--
+=====================================================================
+ CAMPUS VOICE AI  -  FRONTEND (Single-Page Role-Enforced Web App)
+=====================================================================
+
+ PRESENTATION NOTE
+ -----------------
+ Role-Based View Architecture:
+   * STUDENT ROLE: Authorized ONLY to Submit Feedback and View/Join Events.
+                   Dashboard, Feedback Management, CSV Explorer, and AI Insights
+                   are hidden and restricted.
+   * LECTURER & MANAGEMENT ROLES: Authorized to access full Analytics Dashboard,
+                                  Feedback Management, CSV Explorer, Event Creation,
+                                  and AI Insights.
+=====================================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Campus Voice AI — University Feedback & Analytics Platform</title>
+  <meta name="description" content="Campus Voice AI: Anonymous feedback platform with machine learning, pie chart analytics, severity prioritization, and Gemini AI insights." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Chart.js for interactive pie charts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- Aurora Background Layer & Overlay -->
+<canvas id="galaxy-canvas"></canvas>
+<div id="bg-overlay"></div>
+
+<!-- Sticky Top Bar -->
+<header>
+  <div class="brand">
+    <img src="logo.png" alt="Campus Voice AI Logo" />
+    <h1>Campus Voice AI</h1>
+  </div>
+  <div id="who">Not logged in</div>
+</header>
+
+<!-- ------------------------------------------------------- LOGIN / SIGNUP -->
+<main id="login" class="card">
+  <img src="logo.png" alt="Campus Voice AI Logo" class="logo-big" />
+  <h2 id="authTitle">Login</h2>
+  
+  <input id="name" placeholder="Full Name" class="hide" />
+  <input id="sid" placeholder="Student ID (e.g. SID1001)" class="hide" />
+  
+  <input id="email" placeholder="Email (e.g. student@campus.edu)" />
+  <input id="password" type="password" placeholder="Password" />
+  <input id="confirm" type="password" placeholder="Re-type Password" class="hide" />
+  
+  <label class="row">
+    <input type="checkbox" onchange="showPw(this.checked)" /> Show Password
+  </label>
+  
+  <select id="role" class="hide">
+    <option value="student">Student</option>
+    <option value="lecturer">Lecturer</option>
+    <option value="management">Management</option>
+  </select>
+  
+  <button onclick="submitAuth()">Continue</button>
+  <p class="muted link" onclick="toggleAuth()" id="switch">New here? Create an account</p>
+  <p class="muted">Demo Accounts:<br>student@campus.edu / student123<br>lecturer@campus.edu / lecturer123<br>management@campus.edu / manage123</p>
+  <p id="authMsg" class="error"></p>
+</main>
+
+<!-- --------------------------------------------------------------- MAIN APP -->
+<main id="app" class="hide">
+  <!-- Navigation Header Tabs -->
+  <nav>
+    <img src="logo.png" alt="" class="nav-logo" />
+    <button id="tab-give" onclick="show('give')">Give Feedback</button>
+    <button id="tab-events" onclick="show('events')">Events</button>
+    <button id="tab-dash" onclick="show('dash')">Dashboard</button>
+    <button id="tab-manage" onclick="show('manage')">Feedback Management</button>
+    <button id="tab-explorer" onclick="show('explorer')">CSV Explorer</button>
+    <button id="tab-ai" onclick="show('ai')">AI Insights</button>
+    <button onclick="logout()">Logout</button>
+  </nav>
+
+  <!-- ==================== SCREEN 1: GIVE FEEDBACK ==================== -->
+  <section id="give" class="card hide">
+    <h2>Give Anonymous Feedback</h2>
+    <p class="muted">Your identity (Name, Student ID, Email) is strictly decoupled and never stored with feedback.</p>
+    
+    <label>Category guidance:</label>
+    <select id="fcat">
+      <option value="Lecturer">Lecturer</option>
+      <option value="Canteen">Canteen</option>
+      <option value="Hostel">Hostel</option>
+      <option value="Cleanliness">Cleanliness</option>
+      <option value="Security">Security</option>
+    </select>
+
+    <textarea id="ftext" rows="5" placeholder="Describe your experience or feedback in detail (at least 10 characters)..."></textarea>
+    
+    <button onclick="sendFeedback()">Submit Anonymously</button>
+    <p id="fmsg" class="muted" style="margin-top: 10px;"></p>
+  </section>
+
+  <!-- ==================== SCREEN 2: EVENTS ==================== -->
+  <section id="events" class="card hide">
+    <h2>Campus Events</h2>
+    <div id="createEvent" class="hide" style="background: var(--bg-alt); padding: 16px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 20px;">
+      <h3>Create Campus Event (Lecturer / Management)</h3>
+      <input id="etitle" placeholder="Event Title (e.g., Campus Townhall & AI Q&A)" />
+      <input id="edate" type="date" />
+      <input id="evenue" placeholder="Venue (e.g., Main Auditorium)" />
+      <button onclick="submitEvent()">Create Event & Generate Code</button>
+    </div>
+    
+    <h3>Join Event (Student)</h3>
+    <div class="row">
+      <input id="ecode" placeholder="Enter 6-character Event Code (e.g. K7Q2ZP)" />
+      <button onclick="joinEvent()" style="width: auto;">Join Event</button>
+    </div>
+    <p id="emsg" class="muted" style="margin-top: 10px;"></p>
+    
+    <h3>Upcoming Events</h3>
+    <div id="elist"></div>
+  </section>
+
+  <!-- ==================== SCREEN 3: DASHBOARD (LECTURER/MANAGEMENT) ==================== -->
+  <section id="dash" class="card hide">
+    <div class="brand">
+      <img src="logo.png" alt="" />
+      <h2>Analytics Dashboard</h2>
+    </div>
+    
+    <!-- Top Summary KPI Cards -->
+    <div id="stats" class="stats"></div>
+
+    <!-- Severity Distribution Progress Bar -->
+    <h3>Severity Distribution</h3>
+    <div id="sevBreakdown" class="severity-breakdown"></div>
+
+    <!-- Chart.js Interactive Pie Charts -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h4>Sentiment Distribution</h4>
+        <div class="chart-container">
+          <canvas id="sentimentPieCanvas"></canvas>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h4>Category Breakdown</h4>
+        <div class="chart-container">
+          <canvas id="categoryPieCanvas"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export Actions -->
+    <div class="row" style="margin-top: 20px;">
+      <button onclick="exportCsv()">Export Feedback (CSV)</button>
+      <button onclick="printReport()">Printable Executive Report / PDF</button>
+    </div>
+
+    <h3>Recent Anonymous Feedback</h3>
+    <div id="list"></div>
+  </section>
+
+  <!-- ==================== SCREEN 4: FEEDBACK MANAGEMENT (LECTURER/MANAGEMENT) ==================== -->
+  <section id="manage" class="card hide">
+    <h2>Feedback Management</h2>
+    <p class="muted">Review, filter, and prioritize anonymous feedback by category, sentiment, or severity score.</p>
+    
+    <div class="filter-bar">
+      <input id="mSearch" placeholder="Search feedback text..." oninput="loadManagement()" />
+      <select id="mCat" onchange="loadManagement()">
+        <option value="All">All Categories</option>
+        <option value="Lecturer">Lecturer</option>
+        <option value="Canteen">Canteen</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Cleanliness">Cleanliness</option>
+        <option value="Security">Security</option>
+      </select>
+      <select id="mSent" onchange="loadManagement()">
+        <option value="All">All Sentiments</option>
+        <option value="Positive">Positive</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Negative">Negative</option>
+      </select>
+      <select id="mSev" onchange="loadManagement()">
+        <option value="All">All Severities</option>
+        <option value="Critical">Critical</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <select id="mSort" onchange="loadManagement()">
+        <option value="severity_desc">Sort: Severity (Critical First)</option>
+        <option value="date_desc">Sort: Date (Newest First)</option>
+        <option value="date_asc">Sort: Date (Oldest First)</option>
+      </select>
+    </div>
+
+    <div id="mList"></div>
+  </section>
+
+  <!-- ==================== SCREEN 5: CSV DATA EXPLORER (LECTURER/MANAGEMENT) ==================== -->
+  <section id="explorer" class="card hide">
+    <h2>CSV Data Explorer</h2>
+    <p class="muted">Explore full dataset records loaded from database/CSV. PII (Passwords, Emails, SIDs) is strictly hidden.</p>
+
+    <div class="filter-bar">
+      <input id="expSearch" placeholder="Search dataset..." oninput="loadExplorer(1)" />
+      <select id="expCat" onchange="loadExplorer(1)">
+        <option value="All">All Categories</option>
+        <option value="Lecturer">Lecturer</option>
+        <option value="Canteen">Canteen</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Cleanliness">Cleanliness</option>
+        <option value="Security">Security</option>
+      </select>
+      <select id="expSent" onchange="loadExplorer(1)">
+        <option value="All">All Sentiments</option>
+        <option value="Positive">Positive</option>
+        <option value="Neutral">Neutral</option>
+        <option value="Negative">Negative</option>
+      </select>
+      <select id="expSev" onchange="loadExplorer(1)">
+        <option value="All">All Severities</option>
+        <option value="Critical">Critical</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <select id="expLimit" onchange="loadExplorer(1)">
+        <option value="10">10 Rows per page</option>
+        <option value="25" selected>25 Rows per page</option>
+        <option value="50">50 Rows per page</option>
+      </select>
+      <button onclick="exportCsv()" style="width: auto;">Export CSV</button>
+    </div>
+
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Category</th>
+            <th>Sentiment</th>
+            <th>Severity</th>
+            <th>Date</th>
+            <th>Feedback Text</th>
+          </tr>
+        </thead>
+        <tbody id="expTableBody"></tbody>
+      </table>
+    </div>
+
+    <div class="pagination">
+      <button id="btnPrevPage" onclick="prevExplorerPage()">Previous</button>
+      <span id="expPageInfo">Page 1</span>
+      <button id="btnNextPage" onclick="nextExplorerPage()">Next</button>
+    </div>
+  </section>
+
+  <!-- ==================== SCREEN 6: AI INSIGHTS (LECTURER/MANAGEMENT) ==================== -->
+  <section id="ai" class="card hide">
+    <h2>Campus AI Insights</h2>
+    <p class="muted">Generate structured executive analysis (Key Strengths, Key Complaints, Themes, Actions, Priority Level) for any topic.</p>
+    
+    <div class="row">
+      <select id="scat">
+        <option value="Lecturer">Lecturer</option>
+        <option value="Canteen">Canteen</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Cleanliness">Cleanliness</option>
+        <option value="Security">Security</option>
+      </select>
+      <button onclick="getSummary()" style="width: auto;">Generate Structured Summary</button>
+      <button onclick="getSummary(true)" style="width: auto; background: var(--bg-alt); color: var(--primary); border: 1px solid var(--border);">Refresh Summary</button>
+    </div>
+    
+    <div id="summary" class="box" style="margin-top: 16px;">Click 'Generate' to load AI insights.</div>
+
+    <h3>Campus AI Assistant</h3>
+    <div class="row">
+      <input id="q" placeholder="Ask a question (e.g., What are the main complaints about hostel wifi?)" />
+      <button onclick="askBot()" style="width: auto;">Ask Chatbot</button>
+    </div>
+    <div id="answer" class="box" style="margin-top: 16px;"></div>
+  </section>
+</main>
+
+<!-- Load Galaxy Canvas Script -->
+<script src="galaxy.js"></script>
+
+<script>
+// ===================================================================
+// APPLICATION STATE & UTILITIES
+// ===================================================================
+
+let user = null;
+let signup = false;
+let lastStats = {};
+let lastSummary = "";
+
+// Chart.js instances
+let sentimentPieChart = null;
+let categoryPieChart = null;
+
+// Pagination state for CSV Explorer
+let explorerPage = 1;
+let explorerTotalPages = 1;
+
+const $ = (id) => document.getElementById(id);
+const showEl = (id, on) => $(id).classList.toggle("hide", !on);
+
+async function api(path, body) {
+  try {
+    const res = await fetch(path, body
+      ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }
+      : {});
+    return await res.json();
+  } catch (e) {
+    return { error: "Backend server unreachable. Start backend with: python app.py" };
+  }
+}
+
+// ===================================================================
+// AUTHENTICATION & ROLE-BASED ACCESS CONTROL
+// ===================================================================
+
+function toggleAuth() {
+  signup = !signup;
+  ["name", "sid", "confirm", "role"].forEach((id) => showEl(id, signup));
+  $("authTitle").textContent = signup ? "Create Account" : "Login";
+  $("switch").textContent = signup ? "Already have an account? Login" : "New here? Create an account";
+}
+
+function showPw(on) {
+  ["password", "confirm"].forEach((id) => ($(id).type = on ? "text" : "password"));
+}
+
+async function submitAuth() {
+  $("authMsg").textContent = "";
+  const body = {
+    name: $("name").value, sid: $("sid").value, email: $("email").value,
+    password: $("password").value, confirm: $("confirm").value, role: $("role").value,
+  };
+  const data = await api(signup ? "/api/signup" : "/api/login", body);
+  if (data.error) return ($("authMsg").textContent = data.error);
+  
+  user = data;
+  $("who").textContent = user.name + " · " + user.role;
+  showEl("login", false);
+  showEl("app", true);
+  
+  applyRolePermissions();
+}
+
+function applyRolePermissions() {
+  if (!user) return;
+  const isStudent = user.role === "student";
+
+  // Hide restricted tabs for student login
+  showEl("tab-dash", !isStudent);
+  showEl("tab-manage", !isStudent);
+  showEl("tab-explorer", !isStudent);
+  showEl("tab-ai", !isStudent);
+
+  // Always show Give Feedback and Events tabs
+  showEl("tab-give", true);
+  showEl("tab-events", true);
+
+  // Hide Event Creation form for students in Events screen
+  showEl("createEvent", !isStudent);
+
+  // Default tab routing
+  if (isStudent) {
+    show("give");
+  } else {
+    show("dash");
+  }
+}
+
+function logout() {
+  user = null;
+  location.reload();
+}
+
+// ===================================================================
+// SCREEN NAVIGATION & ROUTING
+// ===================================================================
+
+function show(id) {
+  // Prevent students from accessing restricted screens directly
+  if (user && user.role === "student") {
+    if (id === "dash" || id === "manage" || id === "explorer" || id === "ai") {
+      id = "give";
+    }
+  }
+
+  const screens = ["dash", "manage", "explorer", "give", "events", "ai"];
+  screens.forEach((s) => {
+    showEl(s, s === id);
+    const btn = $("tab-" + s);
+    if (btn) btn.classList.toggle("active", s === id);
+  });
+
+  if (id === "dash") loadDash();
+  if (id === "manage") loadManagement();
+  if (id === "explorer") loadExplorer(1);
+  if (id === "events") loadEvents();
+}
+
+// ===================================================================
+// SCREEN 1: DASHBOARD (LECTURER / MANAGEMENT)
+// ===================================================================
+
+async function loadDash() {
+  if (user && user.role === "student") return;
+
+  const s = (await api("/api/stats")) || {};
+  lastStats = s;
+
+  if (s.error) {
+    $("stats").innerHTML = `<p class="muted">${s.error}</p>`;
+    return;
+  }
+
+  // Render KPI Summary Stat Tiles
+  $("stats").innerHTML = [
+    ["Total Feedback", s.total || 0],
+    ["Positive", s.positive || 0],
+    ["Neutral", s.neutral || 0],
+    ["Negative", s.negative || 0],
+    ["Top Category", s.top_category || "N/A"],
+    ["Most Critical", s.most_critical_category || "N/A"],
+    ["Category Accuracy", (s.accuracy || 0) + "%"],
+    ["Sentiment Accuracy", (s.sentiment_accuracy || 0) + "%"]
+  ].map(([k, v]) => `<div class="stat"><b>${v}</b><span>${k}</span></div>`).join("");
+
+  // Render Severity Distribution Breakdown Pills
+  const sevs = s.severity_counts || {};
+  $("sevBreakdown").innerHTML = ["Critical", "High", "Medium", "Low"].map((sev) => {
+    const count = sevs[sev] || 0;
+    return `<div class="sev-pill ${sev}">${sev}: ${count}</div>`;
+  }).join("");
+
+  // Render Chart.js Sentiment Pie Chart
+  renderSentimentChart(s.positive || 0, s.neutral || 0, s.negative || 0);
+
+  // Render Chart.js Category Pie Chart
+  renderCategoryChart(s.categories || {});
+
+  // Load Recent Anonymous Feedback (newest first)
+  const res = await api(`/api/feedback?sort=date_desc&limit=15&user_id=${user ? user.id : ''}`);
+  const rows = res.data || (Array.isArray(res) ? res : []);
+  
+  $("list").innerHTML = rows.length
+    ? rows.map((r) => `
+        <div class="fb">
+          <div>
+            <span class="badge category">${r.category}</span>
+            <span class="badge ${r.severity}">${r.severity}</span>
+            <em class="${r.sentiment}">${r.sentiment}</em>
+          </div>
+          <p>${r.text}</p>
+          <small>${r.student} · ${r.created_at || 'Recently'}</small>
+        </div>`).join("")
+    : '<p class="muted">No feedback records available.</p>';
+}
+
+function renderSentimentChart(pos, neu, neg) {
+  const ctx = $("sentimentPieCanvas").getContext("2d");
+  if (sentimentPieChart) sentimentPieChart.destroy();
+
+  sentimentPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: ['Positive', 'Neutral', 'Negative'],
+      datasets: [{
+        data: [pos, neu, neg],
+        backgroundColor: ['#10B981', '#F59E0B', '#EF4444'],
+        borderWidth: 1,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#4b5563' } },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const total = pos + neu + neg;
+              const value = context.raw;
+              const pct = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+              return `${context.label}: ${value} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+function renderCategoryChart(cats) {
+  const ctx = $("categoryPieCanvas").getContext("2d");
+  if (categoryPieChart) categoryPieChart.destroy();
+
+  const labels = Object.keys(cats);
+  const data = Object.values(cats);
+  const total = data.reduce((a, b) => a + b, 0);
+
+  categoryPieChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: data,
+        backgroundColor: ['#6366F1', '#8B5CF6', '#EC4899', '#14B8A6', '#F97316'],
+        borderWidth: 1,
+        borderColor: '#ffffff'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { labels: { color: '#4b5563' } },
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              const value = context.raw;
+              const pct = total > 0 ? ((value / total) * 100).toFixed(1) : 0;
+              return `${context.label}: ${value} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+// ===================================================================
+// SCREEN 2: FEEDBACK MANAGEMENT (LECTURER / MANAGEMENT)
+// ===================================================================
+
+async function loadManagement() {
+  if (user && user.role === "student") return;
+
+  const q = $("mSearch").value;
+  const cat = $("mCat").value;
+  const sent = $("mSent").value;
+  const sev = $("mSev").value;
+  const sort = $("mSort").value;
+
+  const url = `/api/feedback?q=${encodeURIComponent(q)}&category=${cat}&sentiment=${sent}&severity=${sev}&sort=${sort}&limit=100&user_id=${user ? user.id : ''}`;
+  const res = await api(url);
+  const rows = res.data || [];
+
+  $("mList").innerHTML = rows.length
+    ? rows.map((r) => `
+        <div class="fb">
+          <div>
+            <span class="badge ${r.severity}">${r.severity} Severity</span>
+            <span class="badge category">${r.category}</span>
+            <em class="${r.sentiment}">${r.sentiment}</em>
+          </div>
+          <p>${r.text}</p>
+          <small>${r.student} · Submitted: ${r.created_at || 'N/A'}</small>
+        </div>`).join("")
+    : '<p class="muted">No matching feedback records found.</p>';
+}
+
+// ===================================================================
+// SCREEN 3: CSV DATA EXPLORER (LECTURER / MANAGEMENT)
+// ===================================================================
+
+async function loadExplorer(page = 1) {
+  if (user && user.role === "student") return;
+
+  explorerPage = page;
+  const q = $("expSearch").value;
+  const cat = $("expCat").value;
+  const sent = $("expSent").value;
+  const sev = $("expSev").value;
+  const limit = $("expLimit").value;
+
+  const url = `/api/feedback?q=${encodeURIComponent(q)}&category=${cat}&sentiment=${sent}&severity=${sev}&page=${page}&limit=${limit}&user_id=${user ? user.id : ''}`;
+  const res = await api(url);
+  
+  const rows = res.data || [];
+  explorerTotalPages = res.total_pages || 1;
+
+  $("expTableBody").innerHTML = rows.length
+    ? rows.map((r) => `
+        <tr>
+          <td>#${r.id}</td>
+          <td><span class="badge category">${r.category}</span></td>
+          <td><em class="${r.sentiment}">${r.sentiment}</em></td>
+          <td><span class="badge ${r.severity}">${r.severity}</span></td>
+          <td>${r.created_at ? r.created_at.split(' ')[0] : 'N/A'}</td>
+          <td style="max-width: 400px;">${r.text}</td>
+        </tr>`).join("")
+    : '<tr><td colspan="6" class="muted" style="text-align: center;">No records found.</td></tr>';
+
+  $("expPageInfo").textContent = `Page ${res.page || 1} of ${explorerTotalPages} (${res.total || 0} Total Records)`;
+  $("btnPrevPage").disabled = (res.page || 1) <= 1;
+  $("btnNextPage").disabled = (res.page || 1) >= explorerTotalPages;
+}
+
+function prevExplorerPage() {
+  if (explorerPage > 1) loadExplorer(explorerPage - 1);
+}
+
+function nextExplorerPage() {
+  if (explorerPage < explorerTotalPages) loadExplorer(explorerPage + 1);
+}
+
+// ===================================================================
+// FEEDBACK SUBMISSION (STUDENT / ALL ROLES)
+// ===================================================================
+
+async function sendFeedback() {
+  const text = $("ftext").value.trim();
+  if (text.length < 10) {
+    $("fmsg").innerHTML = `<span class="error">Please write at least 10 characters.</span>`;
+    return;
+  }
+
+  const d = await api("/api/feedback", {
+    user_id: user ? user.id : 1,
+    category: $("fcat").value,
+    text: text
+  });
+
+  if (d.error) {
+    $("fmsg").innerHTML = `<span class="error">${d.error}</span>`;
+  } else {
+    $("fmsg").innerHTML = `<span style="color: #10B981;"><b>Feedback Submitted Anonymously!</b> (Category: <b>${d.category}</b> · Sentiment: <em class="${d.sentiment}">${d.sentiment}</em> · Severity: <span class="badge ${d.severity}">${d.severity}</span>)</span>`;
+    $("ftext").value = "";
+    if (user && user.role !== "student") {
+      loadDash();
+    }
+  }
+}
+
+// ===================================================================
+// EVENT MANAGEMENT (VIEW/JOIN FOR STUDENTS, CREATE FOR LECTURER/MGMT)
+// ===================================================================
+
+async function loadEvents() {
+  if (user) {
+    showEl("createEvent", user.role === "lecturer" || user.role === "management");
+  }
+  const list = await api("/api/events");
+  if (!Array.isArray(list)) {
+    $("elist").innerHTML = `<p class="muted">${list.error || 'Failed to load events.'}</p>`;
+    return;
+  }
+  $("elist").innerHTML = list.length
+    ? list.map((e) => `
+        <div class="fb">
+          <b>${e.title}</b> — ${e.date} · Venue: ${e.venue}
+          <br><small>Join Code: <b style="color: var(--primary); font-size: 14px;">${e.code}</b> · <b>${e.registered}</b> Registered Attendee(s)</small>
+        </div>`).join("")
+    : '<p class="muted">No upcoming events scheduled yet.</p>';
+}
+
+async function submitEvent() {
+  if (!user || (user.role !== "lecturer" && user.role !== "management")) {
+    $("emsg").innerHTML = `<span class="error">Only lecturers and management can create events.</span>`;
+    return;
+  }
+
+  const title = $("etitle").value.trim();
+  const date = $("edate").value;
+  const venue = $("evenue").value.trim();
+
+  if (!title || !date || !venue) {
+    $("emsg").innerHTML = `<span class="error">Please fill in all event details (Title, Date, Venue).</span>`;
+    return;
+  }
+
+  const d = await api("/api/events", {
+    user_id: user.id,
+    title: title,
+    date: date,
+    venue: venue
+  });
+
+  if (d.error) {
+    $("emsg").innerHTML = `<span class="error">${d.error}</span>`;
+  } else {
+    $("emsg").innerHTML = `<span style="color: #10B981;"><b>Event Created Successfully!</b> Join Code: <b style="font-size: 16px; color: var(--primary);">${d.code}</b></span>`;
+    $("etitle").value = "";
+    $("edate").value = "";
+    $("evenue").value = "";
+    loadEvents();
+  }
+}
+
+async function joinEvent() {
+  if (!user || !user.id) {
+    $("emsg").innerHTML = `<span class="error">Please log in first to join an event.</span>`;
+    return;
+  }
+  const code = $("ecode").value.trim();
+  if (!code) {
+    $("emsg").innerHTML = `<span class="error">Please enter a 6-character event code.</span>`;
+    return;
+  }
+
+  const d = await api("/api/register", { code: code, user_id: user.id });
+  if (d.error) {
+    $("emsg").innerHTML = `<span class="error">${d.error}</span>`;
+  } else {
+    $("emsg").innerHTML = `<span style="color: #10B981;"><b>${d.message}</b></span>`;
+    $("ecode").value = "";
+    loadEvents();
+  }
+}
+
+// ===================================================================
+// AI INSIGHTS (LECTURER / MANAGEMENT)
+// ===================================================================
+
+async function getSummary(refresh = false) {
+  if (user && user.role === "student") {
+    $("summary").innerHTML = `<span class="error">Access Denied: AI Summaries are restricted to Lecturers and Management.</span>`;
+    return;
+  }
+  const cat = $("scat").value;
+  $("summary").innerHTML = `<em>Generating structured AI insights for <b>${cat}</b>...</em>`;
+  const d = await api("/api/summary", { category: cat, refresh: refresh, user_id: user ? user.id : '' });
+  if (d.error) {
+    $("summary").innerHTML = `<span class="error"><b>Notice:</b> ${d.error}</span>`;
+  } else {
+    $("summary").textContent = d.summary;
+    lastSummary = d.summary || "";
+  }
+}
+
+async function askBot() {
+  if (user && user.role === "student") {
+    $("answer").innerHTML = `<span class="error">Access Denied: AI Assistant is restricted to Lecturers and Management.</span>`;
+    return;
+  }
+  const question = $("q").value.trim();
+  if (!question) {
+    $("answer").innerHTML = `<span class="error">Please type a question.</span>`;
+    return;
+  }
+  $("answer").innerHTML = `<em>Searching campus feedback database & thinking...</em>`;
+  const d = await api("/api/chat", { question: question, user_id: user ? user.id : '' });
+  if (d.error) {
+    $("answer").innerHTML = `<span class="error"><b>Notice:</b> ${d.error}</span>`;
+  } else {
+    $("answer").textContent = d.answer;
+  }
+}
+
+// ===================================================================
+// EXPORT & REPORTING (LECTURER / MANAGEMENT)
+// ===================================================================
+
+function csvCell(v) {
+  return '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"';
+}
+
+async function exportCsv() {
+  if (user && user.role === "student") {
+    alert("CSV Export is restricted to Lecturers and Management.");
+    return;
+  }
+  const res = await api(`/api/feedback?limit=1000&user_id=${user ? user.id : ''}`);
+  const rows = res.data || [];
+  if (!rows.length) { alert("No feedback available to export."); return; }
+
+  const header = ["id", "category", "sentiment", "severity", "text", "student", "created_at"];
+  const csv = [header.join(",")]
+    .concat(rows.map((r) => header.map((h) => csvCell(r[h])).join(",")))
+    .join("\n");
+
+  const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8;" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "campus_voice_feedback_export.csv";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function printReport() {
+  if (user && user.role === "student") {
+    alert("Executive Reports are restricted to Lecturers and Management.");
+    return;
+  }
+  const s = lastStats || {};
+  const res = await api(`/api/feedback?limit=50&user_id=${user ? user.id : ''}`);
+  const list = res.data || [];
+
+  const html = `<!doctype html><html><head><meta charset="utf-8">
+    <title>Campus Voice AI - Executive Report</title>
+    <style>
+      body{font-family:Arial,sans-serif;margin:32px;color:#111}
+      h1{margin:0 0 4px} .muted{color:#666;font-size:13px}
+      table{border-collapse:collapse;width:100%;margin:12px 0 24px}
+      th,td{border:1px solid #ccc;padding:6px 8px;text-align:left;font-size:13px}
+      th{background:#f2f4f8}
+      pre{white-space:pre-wrap;background:#f7f8fa;padding:12px;border:1px solid #ddd}
+    </style></head><body>
+    <h1>Campus Voice AI - Executive Campus Summary Report</h1>
+    <p class="muted">Generated: ${new Date().toLocaleString()}</p>
+    <h2>Dashboard Key Metrics</h2>
+    <table>
+      <tr><th>Metric</th><th>Value</th></tr>
+      <tr><td>Total Feedback</td><td>${s.total || 0}</td></tr>
+      <tr><td>Positive Sentiment</td><td>${s.positive || 0}</td></tr>
+      <tr><td>Neutral Sentiment</td><td>${s.neutral || 0}</td></tr>
+      <tr><td>Negative Sentiment</td><td>${s.negative || 0}</td></tr>
+      <tr><td>Top Category</td><td>${s.top_category || 'N/A'}</td></tr>
+      <tr><td>Most Critical Category</td><td>${s.most_critical_category || 'N/A'}</td></tr>
+      <tr><td>Category ML Model Accuracy</td><td>${(s.accuracy || 0)}%</td></tr>
+      <tr><td>Sentiment ML Model Accuracy</td><td>${(s.sentiment_accuracy || 0)}%</td></tr>
+    </table>
+    <h2>Latest AI Gemini Executive Summary</h2>
+    <pre>${lastSummary || "No AI summary generated yet. Go to AI Insights tab to generate."}</pre>
+    <h2>Recent Prioritized Feedback</h2>
+    <table>
+      <tr><th>Category</th><th>Sentiment</th><th>Severity</th><th>Feedback</th></tr>
+      ${list.map((r) => `<tr><td>${r.category}</td><td>${r.sentiment}</td><td>${r.severity}</td><td>${r.text}</td></tr>`).join("")}
+    </table>
+    </body></html>`;
+
+  const w = window.open("", "_blank");
+  if (!w) { alert("Please allow pop-ups to open report."); return; }
+  w.document.write(html);
+  w.document.close();
+  w.focus();
+  setTimeout(() => w.print(), 300);
+}
+</script>
+
+</body>
+</html>

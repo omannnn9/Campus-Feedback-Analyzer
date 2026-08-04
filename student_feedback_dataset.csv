@@ -1,0 +1,501 @@
+id,category,feedback_text,sentiment
+1,Hostel,Wifi keeps disconnecting late at night.,Negative
+2,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+3,Hostel,Hostel curfew timing is ten in the night.,Neutral
+4,Lecturer,Teaching pace is comfortable and well planned.,Positive
+5,Lecturer,Teaching pace is comfortable and well planned.,Positive
+6,Lecturer,Classes are frequently cancelled without notice.,Negative
+7,Canteen,Payment by card is now accepted.,Neutral
+8,Lecturer,Class timings were changed this week.,Neutral
+9,Lecturer,Classes are frequently cancelled without notice.,Negative
+10,Security,Street lights near the hostel path are broken.,Negative
+11,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+12,Security,CCTV coverage near the labs is reassuring.,Positive
+13,Canteen,Fresh snacks are available throughout the day.,Positive
+14,Canteen,Fresh snacks are available throughout the day.,Positive
+15,Lecturer,The lecturer uses slides for most topics.,Neutral
+16,Canteen,Payment by card is now accepted.,Neutral
+17,Cleanliness,Garbage near the parking area is not collected.,Negative
+18,Security,Street lights near the hostel path are broken.,Negative
+19,Hostel,Hostel rooms are spacious and well maintained.,Positive
+20,Canteen,The canteen staff are friendly and quick.,Positive
+21,Security,Visitors must sign the register.,Neutral
+22,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+23,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+24,Hostel,Wifi in the hostel is fast and reliable.,Positive
+25,Cleanliness,Campus grounds look neat and well kept.,Positive
+26,Lecturer,Assignments are given with very short deadlines.,Negative
+27,Hostel,Wifi in the hostel is fast and reliable.,Positive
+28,Security,Visitors must sign the register.,Neutral
+29,Lecturer,The lecturer speaks too fast to follow.,Negative
+30,Cleanliness,Washrooms are dirty and lack soap.,Negative
+31,Lecturer,The lecturer speaks too fast to follow.,Negative
+32,Security,Street lights near the hostel path are broken.,Negative
+33,Hostel,Laundry service is very slow this month.,Negative
+34,Hostel,Wifi in the hostel is fast and reliable.,Positive
+35,Hostel,Hostel rooms are spacious and well maintained.,Positive
+36,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+37,Canteen,The food was cold and tasted stale.,Negative
+38,Cleanliness,Garbage near the parking area is not collected.,Negative
+39,Lecturer,Teaching pace is comfortable and well planned.,Positive
+40,Security,Security guards check ID cards properly at the gate.,Positive
+41,Cleanliness,Garbage near the parking area is not collected.,Negative
+42,Cleanliness,Classroom floors are dusty in the evening.,Negative
+43,Cleanliness,Washrooms are dirty and lack soap.,Negative
+44,Lecturer,Doubt sessions after class are very helpful.,Positive
+45,Canteen,Fresh snacks are available throughout the day.,Positive
+46,Canteen,Food quality has improved and prices are fair.,Positive
+47,Canteen,The canteen staff are friendly and quick.,Positive
+48,Security,Gate passes are issued at the security desk.,Neutral
+49,Security,Bike theft was reported and no action was taken.,Negative
+50,Lecturer,The lecturer uses slides for most topics.,Neutral
+51,Security,I feel safe walking on campus at night.,Positive
+52,Cleanliness,Campus grounds look neat and well kept.,Positive
+53,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+54,Canteen,Food quality has improved and prices are fair.,Positive
+55,Hostel,Hostel curfew timing is ten in the night.,Neutral
+56,Lecturer,The lecturer uses slides for most topics.,Neutral
+57,Lecturer,Assignments are given with very short deadlines.,Negative
+58,Lecturer,Doubt sessions after class are very helpful.,Positive
+59,Security,CCTV coverage near the labs is reassuring.,Positive
+60,Hostel,Laundry service is very slow this month.,Negative
+61,Hostel,Hostel curfew timing is ten in the night.,Neutral
+62,Cleanliness,Garbage near the parking area is not collected.,Negative
+63,Cleanliness,Cleaning staff work in two shifts.,Neutral
+64,Canteen,The canteen staff are friendly and quick.,Positive
+65,Hostel,Hostel curfew timing is ten in the night.,Neutral
+66,Security,CCTV coverage near the labs is reassuring.,Positive
+67,Hostel,Warden responds quickly to our requests.,Positive
+68,Lecturer,The lecturer speaks too fast to follow.,Negative
+69,Lecturer,The lecturer speaks too fast to follow.,Negative
+70,Security,Security guards check ID cards properly at the gate.,Positive
+71,Hostel,Laundry service is very slow this month.,Negative
+72,Security,Street lights near the hostel path are broken.,Negative
+73,Canteen,The canteen menu is the same every week.,Neutral
+74,Canteen,Prices are too expensive for students.,Negative
+75,Canteen,The canteen staff are friendly and quick.,Positive
+76,Hostel,Hot water is not available in the morning.,Negative
+77,Hostel,Hostel curfew timing is ten in the night.,Neutral
+78,Security,Street lights near the hostel path are broken.,Negative
+79,Hostel,Wifi keeps disconnecting late at night.,Negative
+80,Lecturer,Doubt sessions after class are very helpful.,Positive
+81,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+82,Cleanliness,Cleaning staff work in two shifts.,Neutral
+83,Cleanliness,Garbage near the parking area is not collected.,Negative
+84,Lecturer,Classes are frequently cancelled without notice.,Negative
+85,Cleanliness,Washrooms are dirty and lack soap.,Negative
+86,Cleanliness,Garbage near the parking area is not collected.,Negative
+87,Hostel,Warden responds quickly to our requests.,Positive
+88,Cleanliness,Cleaning staff work in two shifts.,Neutral
+89,Canteen,Food quality has improved and prices are fair.,Positive
+90,Lecturer,Teaching pace is comfortable and well planned.,Positive
+91,Canteen,Payment by card is now accepted.,Neutral
+92,Cleanliness,Garbage near the parking area is not collected.,Negative
+93,Canteen,The canteen menu is the same every week.,Neutral
+94,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+95,Security,The back gate is left unattended after eight.,Negative
+96,Cleanliness,Washrooms are dirty and lack soap.,Negative
+97,Canteen,Food quality has improved and prices are fair.,Positive
+98,Hostel,Room allotment happens at the start of term.,Neutral
+99,Hostel,Hostel curfew timing is ten in the night.,Neutral
+100,Lecturer,The lecturer speaks too fast to follow.,Negative
+101,Cleanliness,Classroom floors are dusty in the evening.,Negative
+102,Cleanliness,Classroom floors are dusty in the evening.,Negative
+103,Canteen,Payment by card is now accepted.,Neutral
+104,Security,I feel safe walking on campus at night.,Positive
+105,Canteen,The canteen menu is the same every week.,Neutral
+106,Canteen,Fresh snacks are available throughout the day.,Positive
+107,Lecturer,Class timings were changed this week.,Neutral
+108,Security,Visitors must sign the register.,Neutral
+109,Lecturer,Classes are frequently cancelled without notice.,Negative
+110,Canteen,Food quality has improved and prices are fair.,Positive
+111,Lecturer,The lecturer uses slides for most topics.,Neutral
+112,Lecturer,Classes are frequently cancelled without notice.,Negative
+113,Cleanliness,Campus grounds look neat and well kept.,Positive
+114,Security,Visitors must sign the register.,Neutral
+115,Cleanliness,Dustbins were relocated near the corridors.,Neutral
+116,Security,Bike theft was reported and no action was taken.,Negative
+117,Security,Street lights near the hostel path are broken.,Negative
+118,Security,The back gate is left unattended after eight.,Negative
+119,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+120,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+121,Canteen,Food quality has improved and prices are fair.,Positive
+122,Hostel,Hot water is not available in the morning.,Negative
+123,Hostel,Hostel rooms are spacious and well maintained.,Positive
+124,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+125,Cleanliness,Washrooms are dirty and lack soap.,Negative
+126,Canteen,The canteen staff are friendly and quick.,Positive
+127,Security,I feel safe walking on campus at night.,Positive
+128,Canteen,Food quality has improved and prices are fair.,Positive
+129,Hostel,Warden responds quickly to our requests.,Positive
+130,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+131,Cleanliness,Campus grounds look neat and well kept.,Positive
+132,Hostel,Hostel curfew timing is ten in the night.,Neutral
+133,Lecturer,Classes are frequently cancelled without notice.,Negative
+134,Lecturer,Notes shared before class make revision easy.,Positive
+135,Lecturer,Classes are frequently cancelled without notice.,Negative
+136,Hostel,Wifi keeps disconnecting late at night.,Negative
+137,Hostel,Warden responds quickly to our requests.,Positive
+138,Security,Visitors must sign the register.,Neutral
+139,Lecturer,Doubt sessions after class are very helpful.,Positive
+140,Cleanliness,Garbage near the parking area is not collected.,Negative
+141,Lecturer,Class timings were changed this week.,Neutral
+142,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+143,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+144,Cleanliness,Campus grounds look neat and well kept.,Positive
+145,Cleanliness,Garbage near the parking area is not collected.,Negative
+146,Security,CCTV coverage near the labs is reassuring.,Positive
+147,Canteen,Long queues during lunch waste our break time.,Negative
+148,Hostel,Hostel rooms are spacious and well maintained.,Positive
+149,Hostel,Hostel curfew timing is ten in the night.,Neutral
+150,Hostel,Warden responds quickly to our requests.,Positive
+151,Canteen,Food quality has improved and prices are fair.,Positive
+152,Hostel,Hostel rooms are spacious and well maintained.,Positive
+153,Security,Gate passes are issued at the security desk.,Neutral
+154,Security,Visitors must sign the register.,Neutral
+155,Lecturer,Assignments are given with very short deadlines.,Negative
+156,Cleanliness,Classroom floors are dusty in the evening.,Negative
+157,Cleanliness,Garbage near the parking area is not collected.,Negative
+158,Canteen,The food was cold and tasted stale.,Negative
+159,Canteen,Prices are too expensive for students.,Negative
+160,Canteen,The canteen staff are friendly and quick.,Positive
+161,Lecturer,Classes are frequently cancelled without notice.,Negative
+162,Lecturer,Class timings were changed this week.,Neutral
+163,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+164,Cleanliness,Classroom floors are dusty in the evening.,Negative
+165,Hostel,Room allotment happens at the start of term.,Neutral
+166,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+167,Hostel,Wifi in the hostel is fast and reliable.,Positive
+168,Hostel,Laundry service is very slow this month.,Negative
+169,Hostel,Wifi in the hostel is fast and reliable.,Positive
+170,Canteen,Food quality has improved and prices are fair.,Positive
+171,Hostel,Wifi in the hostel is fast and reliable.,Positive
+172,Hostel,Hostel curfew timing is ten in the night.,Neutral
+173,Canteen,The canteen menu is the same every week.,Neutral
+174,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+175,Canteen,Food quality has improved and prices are fair.,Positive
+176,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+177,Canteen,Fresh snacks are available throughout the day.,Positive
+178,Canteen,Prices are too expensive for students.,Negative
+179,Security,I feel safe walking on campus at night.,Positive
+180,Cleanliness,Campus grounds look neat and well kept.,Positive
+181,Security,Gate passes are issued at the security desk.,Neutral
+182,Security,Gate passes are issued at the security desk.,Neutral
+183,Security,Bike theft was reported and no action was taken.,Negative
+184,Lecturer,Assignments are given with very short deadlines.,Negative
+185,Canteen,Food quality has improved and prices are fair.,Positive
+186,Canteen,The canteen menu is the same every week.,Neutral
+187,Cleanliness,Classroom floors are dusty in the evening.,Negative
+188,Lecturer,The lecturer uses slides for most topics.,Neutral
+189,Security,Street lights near the hostel path are broken.,Negative
+190,Hostel,Hostel rooms are spacious and well maintained.,Positive
+191,Security,The back gate is left unattended after eight.,Negative
+192,Security,CCTV coverage near the labs is reassuring.,Positive
+193,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+194,Hostel,Hostel rooms are spacious and well maintained.,Positive
+195,Canteen,The food was cold and tasted stale.,Negative
+196,Cleanliness,Washrooms are dirty and lack soap.,Negative
+197,Cleanliness,Garbage near the parking area is not collected.,Negative
+198,Lecturer,The lecturer uses slides for most topics.,Neutral
+199,Canteen,Food quality has improved and prices are fair.,Positive
+200,Hostel,Warden responds quickly to our requests.,Positive
+201,Hostel,Hostel curfew timing is ten in the night.,Neutral
+202,Lecturer,Class timings were changed this week.,Neutral
+203,Hostel,Hot water is not available in the morning.,Negative
+204,Canteen,The food was cold and tasted stale.,Negative
+205,Security,I feel safe walking on campus at night.,Positive
+206,Cleanliness,Classroom floors are dusty in the evening.,Negative
+207,Canteen,Food quality has improved and prices are fair.,Positive
+208,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+209,Lecturer,The lecturer speaks too fast to follow.,Negative
+210,Hostel,Hostel rooms are spacious and well maintained.,Positive
+211,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+212,Security,I feel safe walking on campus at night.,Positive
+213,Canteen,Payment by card is now accepted.,Neutral
+214,Security,Security guards check ID cards properly at the gate.,Positive
+215,Hostel,Wifi in the hostel is fast and reliable.,Positive
+216,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+217,Cleanliness,Garbage near the parking area is not collected.,Negative
+218,Hostel,Wifi keeps disconnecting late at night.,Negative
+219,Hostel,Hostel rooms are spacious and well maintained.,Positive
+220,Hostel,Wifi in the hostel is fast and reliable.,Positive
+221,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+222,Lecturer,The lecturer speaks too fast to follow.,Negative
+223,Hostel,Wifi in the hostel is fast and reliable.,Positive
+224,Cleanliness,Classroom floors are dusty in the evening.,Negative
+225,Lecturer,Teaching pace is comfortable and well planned.,Positive
+226,Hostel,Wifi keeps disconnecting late at night.,Negative
+227,Lecturer,Notes shared before class make revision easy.,Positive
+228,Canteen,The canteen staff are friendly and quick.,Positive
+229,Cleanliness,Cleaning staff work in two shifts.,Neutral
+230,Hostel,Wifi keeps disconnecting late at night.,Negative
+231,Lecturer,Assignments are given with very short deadlines.,Negative
+232,Cleanliness,Classroom floors are dusty in the evening.,Negative
+233,Security,Security guards check ID cards properly at the gate.,Positive
+234,Lecturer,The lecturer speaks too fast to follow.,Negative
+235,Cleanliness,Cleaning staff work in two shifts.,Neutral
+236,Hostel,Hostel curfew timing is ten in the night.,Neutral
+237,Canteen,Canteen opens at nine in the morning.,Neutral
+238,Hostel,Warden responds quickly to our requests.,Positive
+239,Hostel,Hostel rooms are spacious and well maintained.,Positive
+240,Hostel,Room allotment happens at the start of term.,Neutral
+241,Lecturer,Doubt sessions after class are very helpful.,Positive
+242,Lecturer,Teaching pace is comfortable and well planned.,Positive
+243,Security,I feel safe walking on campus at night.,Positive
+244,Cleanliness,Campus grounds look neat and well kept.,Positive
+245,Canteen,Food quality has improved and prices are fair.,Positive
+246,Hostel,Room allotment happens at the start of term.,Neutral
+247,Canteen,Fresh snacks are available throughout the day.,Positive
+248,Canteen,Prices are too expensive for students.,Negative
+249,Cleanliness,Campus grounds look neat and well kept.,Positive
+250,Security,I feel safe walking on campus at night.,Positive
+251,Hostel,Wifi keeps disconnecting late at night.,Negative
+252,Hostel,Room allotment happens at the start of term.,Neutral
+253,Canteen,Prices are too expensive for students.,Negative
+254,Canteen,Food quality has improved and prices are fair.,Positive
+255,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+256,Cleanliness,Washrooms are dirty and lack soap.,Negative
+257,Canteen,Fresh snacks are available throughout the day.,Positive
+258,Cleanliness,Garbage near the parking area is not collected.,Negative
+259,Lecturer,Teaching pace is comfortable and well planned.,Positive
+260,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+261,Canteen,Fresh snacks are available throughout the day.,Positive
+262,Lecturer,Assignments are given with very short deadlines.,Negative
+263,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+264,Lecturer,Classes are frequently cancelled without notice.,Negative
+265,Security,Bike theft was reported and no action was taken.,Negative
+266,Hostel,Laundry service is very slow this month.,Negative
+267,Hostel,Room allotment happens at the start of term.,Neutral
+268,Lecturer,Notes shared before class make revision easy.,Positive
+269,Security,The back gate is left unattended after eight.,Negative
+270,Cleanliness,Campus grounds look neat and well kept.,Positive
+271,Lecturer,Notes shared before class make revision easy.,Positive
+272,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+273,Canteen,The canteen menu is the same every week.,Neutral
+274,Security,I feel safe walking on campus at night.,Positive
+275,Hostel,Hostel rooms are spacious and well maintained.,Positive
+276,Cleanliness,Classroom floors are dusty in the evening.,Negative
+277,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+278,Cleanliness,Washrooms are dirty and lack soap.,Negative
+279,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+280,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+281,Canteen,The canteen staff are friendly and quick.,Positive
+282,Security,I feel safe walking on campus at night.,Positive
+283,Canteen,Food quality has improved and prices are fair.,Positive
+284,Canteen,Canteen opens at nine in the morning.,Neutral
+285,Hostel,Warden responds quickly to our requests.,Positive
+286,Cleanliness,Cleaning staff work in two shifts.,Neutral
+287,Cleanliness,Campus grounds look neat and well kept.,Positive
+288,Lecturer,Classes are frequently cancelled without notice.,Negative
+289,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+290,Security,Security guards check ID cards properly at the gate.,Positive
+291,Lecturer,Teaching pace is comfortable and well planned.,Positive
+292,Hostel,Hot water is not available in the morning.,Negative
+293,Canteen,Food quality has improved and prices are fair.,Positive
+294,Security,The back gate is left unattended after eight.,Negative
+295,Hostel,Wifi keeps disconnecting late at night.,Negative
+296,Hostel,Wifi keeps disconnecting late at night.,Negative
+297,Canteen,Food quality has improved and prices are fair.,Positive
+298,Hostel,Wifi in the hostel is fast and reliable.,Positive
+299,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+300,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+301,Cleanliness,Campus grounds look neat and well kept.,Positive
+302,Cleanliness,Campus grounds look neat and well kept.,Positive
+303,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+304,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+305,Canteen,The food was cold and tasted stale.,Negative
+306,Lecturer,Teaching pace is comfortable and well planned.,Positive
+307,Lecturer,Classes are frequently cancelled without notice.,Negative
+308,Hostel,Hostel rooms are spacious and well maintained.,Positive
+309,Security,I feel safe walking on campus at night.,Positive
+310,Hostel,Laundry service is very slow this month.,Negative
+311,Lecturer,Notes shared before class make revision easy.,Positive
+312,Hostel,Warden responds quickly to our requests.,Positive
+313,Security,Bike theft was reported and no action was taken.,Negative
+314,Lecturer,Doubt sessions after class are very helpful.,Positive
+315,Lecturer,Class timings were changed this week.,Neutral
+316,Cleanliness,Garbage near the parking area is not collected.,Negative
+317,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+318,Canteen,Fresh snacks are available throughout the day.,Positive
+319,Hostel,Hot water is not available in the morning.,Negative
+320,Security,I feel safe walking on campus at night.,Positive
+321,Cleanliness,Campus grounds look neat and well kept.,Positive
+322,Lecturer,Class timings were changed this week.,Neutral
+323,Canteen,Food quality has improved and prices are fair.,Positive
+324,Lecturer,The lecturer uses slides for most topics.,Neutral
+325,Hostel,Wifi in the hostel is fast and reliable.,Positive
+326,Lecturer,The lecturer speaks too fast to follow.,Negative
+327,Security,Security guards check ID cards properly at the gate.,Positive
+328,Cleanliness,Dustbins were relocated near the corridors.,Neutral
+329,Canteen,The canteen staff are friendly and quick.,Positive
+330,Cleanliness,Cleaning staff work in two shifts.,Neutral
+331,Security,Bike theft was reported and no action was taken.,Negative
+332,Lecturer,The lecturer speaks too fast to follow.,Negative
+333,Hostel,Wifi in the hostel is fast and reliable.,Positive
+334,Hostel,Wifi in the hostel is fast and reliable.,Positive
+335,Canteen,Food quality has improved and prices are fair.,Positive
+336,Canteen,The canteen staff are friendly and quick.,Positive
+337,Security,Security guards check ID cards properly at the gate.,Positive
+338,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+339,Security,Gate passes are issued at the security desk.,Neutral
+340,Cleanliness,Washrooms are dirty and lack soap.,Negative
+341,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+342,Cleanliness,Washrooms are dirty and lack soap.,Negative
+343,Hostel,Hostel rooms are spacious and well maintained.,Positive
+344,Canteen,Payment by card is now accepted.,Neutral
+345,Canteen,The food was cold and tasted stale.,Negative
+346,Security,Street lights near the hostel path are broken.,Negative
+347,Security,CCTV coverage near the labs is reassuring.,Positive
+348,Lecturer,Notes shared before class make revision easy.,Positive
+349,Canteen,The canteen staff are friendly and quick.,Positive
+350,Canteen,The canteen staff are friendly and quick.,Positive
+351,Lecturer,The lecturer uses slides for most topics.,Neutral
+352,Canteen,The food was cold and tasted stale.,Negative
+353,Cleanliness,Washrooms are dirty and lack soap.,Negative
+354,Security,Security guards check ID cards properly at the gate.,Positive
+355,Lecturer,Assignments are given with very short deadlines.,Negative
+356,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+357,Cleanliness,Washrooms are dirty and lack soap.,Negative
+358,Security,Security guards check ID cards properly at the gate.,Positive
+359,Cleanliness,Garbage near the parking area is not collected.,Negative
+360,Hostel,Wifi keeps disconnecting late at night.,Negative
+361,Lecturer,Notes shared before class make revision easy.,Positive
+362,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+363,Canteen,The canteen staff are friendly and quick.,Positive
+364,Canteen,The food was cold and tasted stale.,Negative
+365,Canteen,Food quality has improved and prices are fair.,Positive
+366,Cleanliness,Dustbins were relocated near the corridors.,Neutral
+367,Cleanliness,Washrooms are dirty and lack soap.,Negative
+368,Lecturer,Doubt sessions after class are very helpful.,Positive
+369,Cleanliness,Campus grounds look neat and well kept.,Positive
+370,Hostel,Hot water is not available in the morning.,Negative
+371,Canteen,Food quality has improved and prices are fair.,Positive
+372,Security,Security guards check ID cards properly at the gate.,Positive
+373,Lecturer,Doubt sessions after class are very helpful.,Positive
+374,Hostel,Hostel rooms are spacious and well maintained.,Positive
+375,Cleanliness,Campus grounds look neat and well kept.,Positive
+376,Cleanliness,Campus grounds look neat and well kept.,Positive
+377,Security,The back gate is left unattended after eight.,Negative
+378,Canteen,Payment by card is now accepted.,Neutral
+379,Canteen,Long queues during lunch waste our break time.,Negative
+380,Security,I feel safe walking on campus at night.,Positive
+381,Security,I feel safe walking on campus at night.,Positive
+382,Lecturer,Doubt sessions after class are very helpful.,Positive
+383,Lecturer,Assignments are given with very short deadlines.,Negative
+384,Lecturer,The lecturer speaks too fast to follow.,Negative
+385,Lecturer,Teaching pace is comfortable and well planned.,Positive
+386,Security,Street lights near the hostel path are broken.,Negative
+387,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+388,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+389,Cleanliness,Cleaning staff work in two shifts.,Neutral
+390,Lecturer,Teaching pace is comfortable and well planned.,Positive
+391,Cleanliness,Campus grounds look neat and well kept.,Positive
+392,Cleanliness,Garbage near the parking area is not collected.,Negative
+393,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+394,Hostel,Hostel rooms are spacious and well maintained.,Positive
+395,Cleanliness,Cleaning staff work in two shifts.,Neutral
+396,Lecturer,Lectures follow the syllabus as scheduled.,Neutral
+397,Hostel,Laundry service is very slow this month.,Negative
+398,Lecturer,Teaching pace is comfortable and well planned.,Positive
+399,Canteen,Food quality has improved and prices are fair.,Positive
+400,Security,The back gate is left unattended after eight.,Negative
+401,Canteen,The canteen staff are friendly and quick.,Positive
+402,Hostel,Hot water is not available in the morning.,Negative
+403,Canteen,The canteen staff are friendly and quick.,Positive
+404,Security,The back gate is left unattended after eight.,Negative
+405,Hostel,Wifi keeps disconnecting late at night.,Negative
+406,Cleanliness,Campus grounds look neat and well kept.,Positive
+407,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+408,Security,Visitors must sign the register.,Neutral
+409,Hostel,Hostel rooms are spacious and well maintained.,Positive
+410,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+411,Hostel,Hot water is not available in the morning.,Negative
+412,Hostel,Warden responds quickly to our requests.,Positive
+413,Lecturer,Class timings were changed this week.,Neutral
+414,Cleanliness,Cleaning staff work in two shifts.,Neutral
+415,Hostel,Laundry service is very slow this month.,Negative
+416,Cleanliness,Garbage near the parking area is not collected.,Negative
+417,Hostel,Wifi in the hostel is fast and reliable.,Positive
+418,Security,I feel safe walking on campus at night.,Positive
+419,Lecturer,Doubt sessions after class are very helpful.,Positive
+420,Security,The back gate is left unattended after eight.,Negative
+421,Hostel,Wifi keeps disconnecting late at night.,Negative
+422,Hostel,Room allotment happens at the start of term.,Neutral
+423,Lecturer,Classes are frequently cancelled without notice.,Negative
+424,Canteen,Fresh snacks are available throughout the day.,Positive
+425,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+426,Lecturer,Doubt sessions after class are very helpful.,Positive
+427,Security,The back gate is left unattended after eight.,Negative
+428,Lecturer,Notes shared before class make revision easy.,Positive
+429,Hostel,Wifi in the hostel is fast and reliable.,Positive
+430,Security,CCTV coverage near the labs is reassuring.,Positive
+431,Hostel,Hostel curfew timing is ten in the night.,Neutral
+432,Hostel,Room allotment happens at the start of term.,Neutral
+433,Canteen,Food quality has improved and prices are fair.,Positive
+434,Canteen,The canteen menu is the same every week.,Neutral
+435,Canteen,The food was cold and tasted stale.,Negative
+436,Cleanliness,Washrooms are dirty and lack soap.,Negative
+437,Lecturer,The lecturer uses slides for most topics.,Neutral
+438,Hostel,Room allotment happens at the start of term.,Neutral
+439,Security,Bike theft was reported and no action was taken.,Negative
+440,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+441,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+442,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+443,Lecturer,Classes are frequently cancelled without notice.,Negative
+444,Lecturer,The lecturer uses slides for most topics.,Neutral
+445,Canteen,Food quality has improved and prices are fair.,Positive
+446,Security,Visitors must sign the register.,Neutral
+447,Security,I feel safe walking on campus at night.,Positive
+448,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+449,Cleanliness,Washrooms are dirty and lack soap.,Negative
+450,Cleanliness,Classroom floors are dusty in the evening.,Negative
+451,Cleanliness,Campus grounds look neat and well kept.,Positive
+452,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+453,Hostel,Hostel rooms are spacious and well maintained.,Positive
+454,Lecturer,Notes shared before class make revision easy.,Positive
+455,Lecturer,Teaching pace is comfortable and well planned.,Positive
+456,Security,Street lights near the hostel path are broken.,Negative
+457,Canteen,Fresh snacks are available throughout the day.,Positive
+458,Lecturer,Doubt sessions after class are very helpful.,Positive
+459,Canteen,Prices are too expensive for students.,Negative
+460,Hostel,Wifi in the hostel is fast and reliable.,Positive
+461,Hostel,Room allotment happens at the start of term.,Neutral
+462,Security,Gate passes are issued at the security desk.,Neutral
+463,Lecturer,Doubt sessions after class are very helpful.,Positive
+464,Security,The back gate is left unattended after eight.,Negative
+465,Cleanliness,Cleaning staff work in two shifts.,Neutral
+466,Security,The back gate is left unattended after eight.,Negative
+467,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+468,Security,Street lights near the hostel path are broken.,Negative
+469,Canteen,Long queues during lunch waste our break time.,Negative
+470,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+471,Lecturer,Classes are frequently cancelled without notice.,Negative
+472,Security,The back gate is left unattended after eight.,Negative
+473,Security,The back gate is left unattended after eight.,Negative
+474,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+475,Canteen,Food quality has improved and prices are fair.,Positive
+476,Lecturer,Assignments are given with very short deadlines.,Negative
+477,Hostel,Hostel curfew timing is ten in the night.,Neutral
+478,Lecturer,Assignments are given with very short deadlines.,Negative
+479,Canteen,The canteen staff are friendly and quick.,Positive
+480,Cleanliness,Washrooms are much cleaner after the new schedule.,Positive
+481,Hostel,Hot water is not available in the morning.,Negative
+482,Hostel,Laundry service is very slow this month.,Negative
+483,Security,Visitors must sign the register.,Neutral
+484,Security,Street lights near the hostel path are broken.,Negative
+485,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+486,Hostel,Hostel curfew timing is ten in the night.,Neutral
+487,Security,Gate passes are issued at the security desk.,Neutral
+488,Security,The back gate is left unattended after eight.,Negative
+489,Cleanliness,Classrooms are cleaned every morning without fail.,Positive
+490,Hostel,Hot water is not available in the morning.,Negative
+491,Lecturer,The lecturer explains concepts with clear real world examples.,Positive
+492,Cleanliness,Washrooms are dirty and lack soap.,Negative
+493,Cleanliness,Dustbins were relocated near the corridors.,Neutral
+494,Security,Street lights near the hostel path are broken.,Negative
+495,Canteen,Long queues during lunch waste our break time.,Negative
+496,Cleanliness,Campus grounds look neat and well kept.,Positive
+497,Lecturer,The lecturer uses slides for most topics.,Neutral
+498,Security,Bike theft was reported and no action was taken.,Negative
+499,Hostel,Wifi in the hostel is fast and reliable.,Positive
+500,Cleanliness,Classroom floors are dusty in the evening.,Negative

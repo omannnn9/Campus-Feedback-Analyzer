@@ -1,0 +1,390 @@
+/* =====================================================================
+   CAMPUS VOICE AI  -  CLEAN LIGHT THEME (White Background)
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #f5f6f8;
+  --bg-card: #ffffff;
+  --bg-alt: #f9fafb;
+
+  --border: #e2e5ea;
+  --border-focus: #4a6fa5;
+
+  --primary: #3b6fd4;
+  --primary-hover: #2d5bb8;
+
+  --text: #1a1e2e;
+  --text-sub: #4b5563;
+  --text-muted: #9ca3af;
+
+  --critical-bg: #fef2f2; --critical-text: #dc2626; --critical-border: #fecaca;
+  --high-bg:     #fff7ed; --high-text:     #ea580c; --high-border:     #fed7aa;
+  --medium-bg:   #fefce8; --medium-text:   #ca8a04; --medium-border:   #fef08a;
+  --low-bg:      #f0fdf4; --low-text:      #16a34a; --low-border:      #bbf7d0;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: #f5f6f8;
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Ensure all app content sits above aurora */
+header, main, nav, .card, #login {
+  position: relative;
+  z-index: 2;
+}
+
+/* Aurora background (OGL WebGL) */
+#galaxy-canvas { display: none; }     /* old canvas hidden, aurora uses its own div */
+#bg-overlay    { display: none; }     /* no dark overlay on white theme */
+
+#aurora-ctn {
+  opacity: 0.5; /* visible but not overwhelming */
+}
+
+/* ---- Header ---- */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  height: 56px;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand img { width: 28px; height: 28px; object-fit: contain; }
+.brand h1, .brand h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+#who {
+  font-size: 13px;
+  color: var(--text-sub);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+/* ---- Layout ---- */
+main {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+/* ---- Login Card ---- */
+#login {
+  max-width: 400px;
+  margin: 80px auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+}
+
+.logo-big { width: 60px; height: 60px; object-fit: contain; margin-bottom: 16px; }
+
+/* ---- Generic Card ---- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+/* ---- Typography ---- */
+h2 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+h3 {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  margin: 24px 0 10px;
+}
+
+h4 {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+p, .muted { color: var(--text-sub); font-size: 13px; }
+.error { color: #dc2626; }
+.hide { display: none !important; }
+
+/* ---- Inputs ---- */
+input, select, textarea {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  padding: 8px 12px;
+  width: 100%;
+  margin: 5px 0;
+  outline: none;
+  transition: border-color 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--border-focus);
+}
+
+select option { background: #fff; }
+
+/* ---- Buttons ---- */
+button {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 18px;
+  margin: 5px 0;
+  width: 100%;
+  background: var(--primary);
+  color: #fff;
+  border: 1px solid var(--primary);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+button:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* ---- Row ---- */
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.row input, .row select, .row button { margin: 5px 0; }
+.row input[type="checkbox"] { width: auto; }
+
+label.row { font-size: 13px; color: var(--text-sub); cursor: pointer; justify-content: flex-start; }
+
+.link { color: var(--primary); cursor: pointer; font-size: 13px; }
+.link:hover { text-decoration: underline; }
+
+/* ---- Nav ---- */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-wrap: wrap;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 5px 8px;
+  margin-bottom: 20px;
+}
+
+.nav-logo { width: 22px; height: 22px; object-fit: contain; margin-right: 4px; opacity: 0.5; }
+
+nav button {
+  width: auto;
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+  box-shadow: none;
+}
+nav button:hover { background: var(--bg); color: var(--text); border-color: transparent; box-shadow: none; }
+nav button.active { background: var(--bg); color: var(--primary); font-weight: 500; border-color: transparent; box-shadow: none; }
+
+/* ---- KPI Stats ---- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 16px 0 24px;
+}
+
+.stat {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.stat b { display: block; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.stat span { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ---- Charts ---- */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0 20px;
+}
+
+.chart-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.chart-container { position: relative; height: 200px; }
+
+/* ---- Severity Pills ---- */
+.severity-breakdown {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 20px;
+}
+
+.sev-pill {
+  flex: 1 1 100px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.sev-pill.Critical { background: var(--critical-bg); color: var(--critical-text); border: 1px solid var(--critical-border); }
+.sev-pill.High     { background: var(--high-bg);     color: var(--high-text);     border: 1px solid var(--high-border); }
+.sev-pill.Medium   { background: var(--medium-bg);   color: var(--medium-text);   border: 1px solid var(--medium-border); }
+.sev-pill.Low      { background: var(--low-bg);      color: var(--low-text);      border: 1px solid var(--low-border); }
+
+/* ---- Badges ---- */
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-right: 4px;
+  border: 1px solid transparent;
+}
+
+.badge.Critical { background: var(--critical-bg); color: var(--critical-text); border-color: var(--critical-border); }
+.badge.High     { background: var(--high-bg);     color: var(--high-text);     border-color: var(--high-border); }
+.badge.Medium   { background: var(--medium-bg);   color: var(--medium-text);   border-color: var(--medium-border); }
+.badge.Low      { background: var(--low-bg);      color: var(--low-text);      border-color: var(--low-border); }
+.badge.category { background: #eff6ff; color: #3b82f6; border-color: #bfdbfe; }
+
+/* ---- Sentiment Colors ---- */
+em.Positive { color: #16a34a; font-style: normal; font-weight: 500; }
+em.Neutral  { color: #ca8a04; font-style: normal; font-weight: 500; }
+em.Negative { color: #dc2626; font-style: normal; font-weight: 500; }
+
+/* ---- Feedback Items ---- */
+.fb {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.fb:last-child { border-bottom: none; }
+.fb p { margin: 6px 0; color: var(--text); }
+.fb small { color: var(--text-muted); font-size: 12px; }
+
+/* ---- Filter Bar ---- */
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.filter-bar input, .filter-bar select { flex: 1 1 140px; margin: 0; }
+
+/* ---- Table ---- */
+.table-responsive {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-top: 12px;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+
+th {
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+td {
+  padding: 10px 14px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--bg-alt); }
+
+/* ---- Pagination ---- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 14px;
+  gap: 10px;
+}
+.pagination button { width: auto; padding: 7px 16px; font-size: 13px; }
+.pagination span { font-size: 12px; color: var(--text-muted); }
+
+/* ---- AI Box ---- */
+.box {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px;
+  white-space: pre-wrap;
+  min-height: 48px;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  header { padding: 0 14px; }
+  main { padding: 0 12px; margin: 16px auto; }
+  .card { padding: 16px; }
+  .charts-grid { grid-template-columns: 1fr; }
+  .filter-bar { flex-direction: column; }
+  .row { flex-direction: column; align-items: stretch; }
+}
